@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+template <typename T, int N>
+void selectionSort(T(&arr)[N]) {
+    for (int i = 0; i < N - 1; i++) {
+        int smallSub = i;
+
+        for (int j = i + 1; j < N; j++) {
+            if (arr[j] < arr[smallSub]) {
+                smallSub = j;
+            }
+        }
+     
+        if (smallSub != i) {
+            T temp = arr[i];
+            arr[i] = arr[smallSub];
+            arr[smallSub] = temp;
+        }
+    }
+}
+template <typename t, int n>
+void printArray(t(&arr)[n]) {
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+    
+    int array[5] = { 64, 25, 12, 22, 11 };
+    cout << "Original integer array: ";
+    for (int i = 0; i < 5; i++) {
+        cout << array[i] << " ";
+    }
+    cout << endl;
+
+    selectionSort(array);
+
+    cout << "Sorted integer array: ";
+    printArray(array);
+
+  
+    string stringarr[4] = { "apple", "orange", "banana", "grape" };
+    cout << "Original string array: ";
+    for (int i = 0; i < 4; i++) {
+        cout << stringarr[i] << " ";
+    }
+    cout << endl;
+
+    selectionSort(stringarr);
+
+    cout << "Sorted string array: ";
+    printArray(stringarr);
+
+    return 0;
+}
